@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
 public class SwerveDrivetrain extends SubsystemBase {
@@ -24,7 +23,7 @@ public class SwerveDrivetrain extends SubsystemBase {
   //these are limits you can change!!!
   public static final double kMaxSpeed = Units.feetToMeters(13.6); // 20 feet per second
   public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
-  public static double feildCalibration = 0;
+  public static double fieldCalibration = 0;
 
   //this is where you put the angle offsets you got from the smart dashboard
 
