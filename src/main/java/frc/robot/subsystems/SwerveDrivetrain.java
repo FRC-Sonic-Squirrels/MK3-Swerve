@@ -21,16 +21,18 @@ import edu.wpi.first.wpilibj.geometry.Rotation2d;
 public class SwerveDrivetrain extends SubsystemBase {
 
   //these are limits you can change!!!
-  public static final double kMaxSpeed = Units.feetToMeters(13.6); // 20 feet per second
-  public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
+  // Units.feetToMeters(13.6);  // 20 feet per second
+  public static final double kMaxSpeed = Units.feetToMeters(1.0);
+  // Math.PI; // 1/2 rotation per second
+  public static final double kMaxAngularSpeed = Math.PI / 4; 
   public static double fieldCalibration = 0;
 
-  //this is where you put the angle offsets you got from the smart dashboard
+  //this is where you put the angle offsets in degrees you got from the smart dashboard
 
-  public static double frontLeftOffset = 0;
-  public static double frontRightOffset = 0;
-  public static double backLeftOffset = 0;
-  public static double backRightOffset = 0;
+  public static double frontLeftOffset = 141.0 + 180;
+  public static double frontRightOffset = 61.8;
+  public static double backLeftOffset = 28.3;
+  public static double backRightOffset = 182.6;
 
   //put your can Id's here!
   public static final int frontLeftDriveId = 1;
@@ -52,21 +54,24 @@ public class SwerveDrivetrain extends SubsystemBase {
   public static AHRS gyro = new AHRS(SPI.Port.kMXP);
 
   private SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
+    // TODO: check order of corners
+    // width = 19 inches
+    // length = 19.5 inches
     new Translation2d(
-      Units.inchesToMeters(10),
-      Units.inchesToMeters(10)
+      Units.inchesToMeters(9.5),
+      Units.inchesToMeters(9.75)
     ),
     new Translation2d(
-      Units.inchesToMeters(10),
-      Units.inchesToMeters(-10)
+      Units.inchesToMeters(9.5),
+      Units.inchesToMeters(-9.75)
     ),
     new Translation2d(
-      Units.inchesToMeters(-10),
-      Units.inchesToMeters(10)
+      Units.inchesToMeters(-9.5),
+      Units.inchesToMeters(9.75)
     ),
     new Translation2d(
-      Units.inchesToMeters(-10),
-      Units.inchesToMeters(-10)
+      Units.inchesToMeters(-9.5),
+      Units.inchesToMeters(-9.75)
     )
   );
 
