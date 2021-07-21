@@ -29,15 +29,23 @@ public class SwerveDriveCommand extends CommandBase {
   public void execute() {
     // Get the x speed. We are inverting this because Xbox controllers return
     // negative values when we push forward.
-    final var xSpeed =
-      -xspeedLimiter.calculate(controller.getY(GenericHID.Hand.kLeft))
+    double joyY = controller.getY(GenericHID.Hand.kLeft);
+    if (Math.abs(joyY) < 0.02) {
+      joyY = 0.0;
+    }
+    final var xSpeed = 
+      -xspeedLimiter.calculate(joyY)
         * SwerveDrivetrain.kMaxSpeed;
 
     // Get the y speed or sideways/strafe speed. We are inverting this because
     // we want a positive value when we pull to the left. Xbox controllers
     // return positive values when you pull to the right by default.
+    double joyX = controller.getX(GenericHID.Hand.kLeft);
+    if (Math.abs(joyX) < 0.02) {
+      joyX = 0.0;
+    }
     final var ySpeed =
-      -yspeedLimiter.calculate(controller.getX(GenericHID.Hand.kLeft))
+      -yspeedLimiter.calculate(joyX)
         * SwerveDrivetrain.kMaxSpeed;
 
     // Get the rate of angular rotation. We are inverting this because we want a
