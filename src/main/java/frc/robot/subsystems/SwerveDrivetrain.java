@@ -54,24 +54,26 @@ public class SwerveDrivetrain extends SubsystemBase {
   public static AHRS gyro = new AHRS(SPI.Port.kMXP);
 
   private SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
-    // TODO: check order of corners
-    // width = 19 inches
-    // length = 19.5 inches
+    // width = 19 inches, length = 19.5 inches
+    // front left
     new Translation2d(
-      Units.inchesToMeters(9.5),
-      Units.inchesToMeters(9.75)
+      Units.inchesToMeters(9.75),
+      Units.inchesToMeters(9.5)
     ),
+    // front right
     new Translation2d(
-      Units.inchesToMeters(9.5),
-      Units.inchesToMeters(-9.75)
+      Units.inchesToMeters(9.75),
+      Units.inchesToMeters(-9.5)
     ),
+    // back left
     new Translation2d(
-      Units.inchesToMeters(-9.5),
-      Units.inchesToMeters(9.75)
+      Units.inchesToMeters(-9.75),
+      Units.inchesToMeters(9.5)
     ),
+    // back right
     new Translation2d(
-      Units.inchesToMeters(-9.5),
-      Units.inchesToMeters(-9.75)
+      Units.inchesToMeters(-9.75),
+      Units.inchesToMeters(-9.5)
     )
   );
 
