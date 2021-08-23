@@ -33,7 +33,7 @@ public class SwerveDriveCommand extends CommandBase {
     if (Math.abs(joyY) < 0.02) {
       joyY = 0.0;
     }
-    final var xSpeed = 
+    double xSpeed = 
       -xspeedLimiter.calculate(joyY)
         * SwerveDrivetrain.kMaxSpeed;
 
@@ -44,7 +44,7 @@ public class SwerveDriveCommand extends CommandBase {
     if (Math.abs(joyX) < 0.02) {
       joyX = 0.0;
     }
-    final var ySpeed =
+    double ySpeed =
       -yspeedLimiter.calculate(joyX)
         * SwerveDrivetrain.kMaxSpeed;
 
@@ -52,11 +52,17 @@ public class SwerveDriveCommand extends CommandBase {
     // positive value when we pull to the left (remember, CCW is positive in
     // mathematics). Xbox controllers return positive values when you pull to
     // the right by default.
-    final var rot =
+    double rot =
       -rotLimiter.calculate(controller.getX(GenericHID.Hand.kRight))
         * SwerveDrivetrain.kMaxAngularSpeed;
 
     boolean calibrate = controller.getBumper(GenericHID.Hand.kLeft);
+
+    // TODO: undo nerfing speed
+    double nerfK = 0.25;
+    xSpeed = nerfK * xSpeed;
+    ySpeed = nerfK * ySpeed;
+    rot = nerfK * rot;
 
     drivetrain.drive(xSpeed, ySpeed, rot, true, calibrate);
     

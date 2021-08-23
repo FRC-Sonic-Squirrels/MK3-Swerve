@@ -22,14 +22,13 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   //these are limits you can change!!!
   // Units.feetToMeters(13.6);  // 20 feet per second
-  public static final double kMaxSpeed = Units.feetToMeters(1.0);
-  // Math.PI; // 1/2 rotation per second
-  public static final double kMaxAngularSpeed = Math.PI / 4; 
+  public static final double kMaxSpeed = Units.feetToMeters(13.6);
+  public static final double kMaxAngularSpeed = Math.PI;   // Math.PI; // 1/2 rotation per second
   public static double fieldCalibration = 0;
 
   //this is where you put the angle offsets in degrees you got from the smart dashboard
 
-  public static double frontLeftOffset = 141.0 + 180;
+  public static double frontLeftOffset = 141.0;
   public static double frontRightOffset = 61.8;
   public static double backLeftOffset = 28.3;
   public static double backRightOffset = 182.6;
@@ -119,8 +118,8 @@ public class SwerveDrivetrain extends SubsystemBase {
       SmartDashboard.putNumber(String.valueOf(i), module.getRawAngle());
       //below is a line to comment out from step 5
       module.setDesiredState(state);
-      SmartDashboard.putNumber("gyro Angle", gyro.getAngle());
     }
+    SmartDashboard.putNumber("gyro Angle", gyro.getAngle());
   }
 
   @Override
