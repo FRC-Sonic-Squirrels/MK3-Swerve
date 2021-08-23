@@ -80,7 +80,7 @@ public class SwerveModuleMK3 {
   public double getRawAngle() {
     return canCoder.getAbsolutePosition(); //include angle offset
   }
-  //:)
+  //:)<
   /**
    * Set the speed + rotation of the swerve module from a SwerveModuleState object
    * @param desiredState - A SwerveModuleState representing the desired new state of the module
@@ -99,13 +99,13 @@ public class SwerveModuleMK3 {
     double currentTicks = canCoder.getPosition() / canCoder.configGetFeedbackCoefficient();
     double desiredTicks = currentTicks + deltaTicks;
 
-    //below is a line to comment out from step 5
-    angleMotor.set(TalonFXControlMode.Position, desiredTicks);
+    //TODO: below is a line to comment out from step 5
+    //angleMotor.set(TalonFXControlMode.Position, desiredTicks);
 
     double feetPerSecond = Units.metersToFeet(state.speedMetersPerSecond);
 
-    //below is a line to comment out from step 5
-    driveMotor.set(TalonFXControlMode.PercentOutput, feetPerSecond / SwerveDrivetrain.kMaxSpeed);
+    // TODO: below is a line to comment out from step 5
+    // driveMotor.set(TalonFXControlMode.PercentOutput, feetPerSecond / SwerveDrivetrain.kMaxSpeed);
   }
 
 }

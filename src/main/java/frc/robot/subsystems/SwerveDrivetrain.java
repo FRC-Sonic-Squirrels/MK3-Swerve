@@ -28,10 +28,10 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   //this is where you put the angle offsets in degrees you got from the smart dashboard
 
-  public static double frontLeftOffset = 141.0;
-  public static double frontRightOffset = 61.8;
-  public static double backLeftOffset = 28.3;
-  public static double backRightOffset = 182.6;
+  public static double frontLeftOffset = 0.0;
+  public static double frontRightOffset = 0.0;
+  public static double backLeftOffset = 0.0;
+  public static double backRightOffset = 0.0;
 
   //put your can Id's here!
   public static final int frontLeftDriveId = 1;
@@ -116,8 +116,8 @@ public class SwerveDrivetrain extends SubsystemBase {
       SwerveModuleMK3 module = modules[i];
       SwerveModuleState state = states[i];
       SmartDashboard.putNumber(String.valueOf(i), module.getRawAngle());
-      //below is a line to comment out from step 5
-      module.setDesiredState(state);
+      // TODO: below is a line to comment out from step 5
+      //module.setDesiredState(state);
     }
     SmartDashboard.putNumber("gyro Angle", gyro.getAngle());
   }
