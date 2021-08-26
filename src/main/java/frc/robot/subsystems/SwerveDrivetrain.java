@@ -28,10 +28,10 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   //this is where you put the angle offsets in degrees you got from the smart dashboard
 
-  public static double frontLeftOffset = 321.6;
-  public static double frontRightOffset = 64.0;
+  public static double frontLeftOffset = 140.7;  // 321.6;
+  public static double frontRightOffset = 246.4; // 64.0;
   public static double backLeftOffset = 28.0;
-  public static double backRightOffset = 5.8;
+  public static double backRightOffset = 178.4;  // 5.8;
 
   //put your can Id's here!
   public static final int frontLeftDriveId = 1;
@@ -56,22 +56,22 @@ public class SwerveDrivetrain extends SubsystemBase {
     // width = 19 inches, length = 19.5 inches
     // front left
     new Translation2d(
-      Units.inchesToMeters(9.75),
+      Units.inchesToMeters(9.5),
       Units.inchesToMeters(9.5)
     ),
     // front right
     new Translation2d(
-      Units.inchesToMeters(9.75),
+      Units.inchesToMeters(9.5),
       Units.inchesToMeters(-9.5)
     ),
     // back left
     new Translation2d(
-      Units.inchesToMeters(-9.75),
+      Units.inchesToMeters(-9.5),
       Units.inchesToMeters(9.5)
     ),
     // back right
     new Translation2d(
-      Units.inchesToMeters(-9.75),
+      Units.inchesToMeters(-9.5),
       Units.inchesToMeters(-9.5)
     )
   );
