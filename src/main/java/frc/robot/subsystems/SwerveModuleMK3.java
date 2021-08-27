@@ -104,6 +104,7 @@ public class SwerveModuleMK3 {
 
     double feetPerSecond = Units.metersToFeet(state.speedMetersPerSecond);
 
+    // TODO: switch from PercentOutput to PID control for wheel speed
     //below is a line to comment out from step 5
     driveMotor.set(TalonFXControlMode.PercentOutput, feetPerSecond / SwerveDrivetrain.kMaxSpeed);
   }
