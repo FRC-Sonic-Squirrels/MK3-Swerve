@@ -77,10 +77,16 @@ public class SwerveModuleMK3 {
   public Rotation2d getAngle() {
     return Rotation2d.fromDegrees(canCoder.getAbsolutePosition()); //include angle offset
   }
+  
+  /**
+   * Gets the relative rotational position of the module
+   * @return The relative rotational position of the angle motor in degrees
+   */
   public double getRawAngle() {
     return canCoder.getAbsolutePosition(); //include angle offset
   }
-  //:)
+  
+
   /**
    * Set the speed + rotation of the swerve module from a SwerveModuleState object
    * @param desiredState - A SwerveModuleState representing the desired new state of the module
