@@ -27,11 +27,10 @@ public class SwerveDrivetrain extends SubsystemBase {
   public static double fieldCalibration = 0;
 
   //this is where you put the angle offsets in degrees you got from the smart dashboard
-
-  public static double frontLeftOffset = 140.7;  // 321.6;
-  public static double frontRightOffset = 246.4; // 64.0;
-  public static double backLeftOffset = 28.0;
-  public static double backRightOffset = 178.4;  // 5.8;
+  public static double frontLeftOffset = -140.7;  // 321.6;
+  public static double frontRightOffset = -246.4; // 64.0;
+  public static double backLeftOffset = -28.0;
+  public static double backRightOffset = -178.4;  // 5.8;
 
   //put your can Id's here!
   public static final int frontLeftDriveId = 1;
