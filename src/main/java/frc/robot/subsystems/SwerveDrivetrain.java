@@ -23,7 +23,7 @@ public class SwerveDrivetrain extends SubsystemBase {
   //these are limits you can change!!!
   // Units.feetToMeters(13.6);  // 20 feet per second
   public static final double kMaxSpeed = Units.feetToMeters(13.6);
-  public static final double kMaxAngularSpeed = Math.PI;   // Math.PI; // 1/2 rotation per second
+  public static final double kMaxAngularSpeed = Math.PI;   // 1/2 rotation per second
   public static double fieldCalibration = 0;
 
   //this is where you put the angle offsets in degrees you got from the smart dashboard
