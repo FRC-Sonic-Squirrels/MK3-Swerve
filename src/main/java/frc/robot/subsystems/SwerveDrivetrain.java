@@ -117,6 +117,8 @@ public class SwerveDrivetrain extends SubsystemBase {
       //SmartDashboard.putNumber(String.valueOf(i), module.getRawAngle());
       //below is a line to comment out from step 5
       module.setDesiredState(state);
+      SmartDashboard.putNumber(String.valueOf(i) + "_desiredstate_angle_deg", state.angle.getDegrees());
+      SmartDashboard.putNumber(String.valueOf(i) + "_desiredstate_speedMetersPerSecond", state.speedMetersPerSecond); 
     }
     //SmartDashboard.putNumber("gyro Angle", gyro.getAngle());
   }
