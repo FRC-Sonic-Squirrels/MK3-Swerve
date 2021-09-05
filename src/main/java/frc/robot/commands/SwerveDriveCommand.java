@@ -59,10 +59,11 @@ public class SwerveDriveCommand extends CommandBase {
     boolean calibrate = controller.getBumper(GenericHID.Hand.kLeft);
 
     // TODO: undo nerfing speed
-    double nerfK = 0.25;
-    xSpeed = nerfK * xSpeed;
-    ySpeed = nerfK * ySpeed;
-    rot = nerfK * rot;
+    double nerfStrafe = 0.1;
+    double nerfRotation = 0.25;
+    xSpeed = nerfStrafe * xSpeed;
+    ySpeed = nerfStrafe * ySpeed;
+    rot = nerfRotation * rot;
 
     drivetrain.drive(xSpeed, ySpeed, rot, true, calibrate);
     
