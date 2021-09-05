@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
 import com.ctre.phoenix.sensors.CANCoder;
 import com.ctre.phoenix.sensors.CANCoderConfiguration;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -39,6 +40,17 @@ public class SwerveModuleMK3 {
     this.angleMotor = angleMotor;
     this.canCoder = canCoder;
     this.offset = offset;
+
+    // Warn if CAN ids won't work. See link for details.
+    // https://docs.ctre-phoenix.com/en/stable/ch21_Errata.html#talonfx-remoteid-errata
+    if (angleMotor.getDeviceID() >= 15) {
+      System.out.print("ERROR: angle motor CAN ids must be < 15");
+      DriverStation.reportError("ERROR: angle motor CAN ids must be < 15", false);
+    }
+    if ( canCoder.getDeviceID() >= 15) {
+      System.out.print("ERROR: CANcoder CAN ids must be < 15");
+      DriverStation.reportError("ERROR: CANcoder CAN ids must be < 15", false);
+    }
 
     TalonFXConfiguration angleTalonFXConfiguration = new TalonFXConfiguration();
 
