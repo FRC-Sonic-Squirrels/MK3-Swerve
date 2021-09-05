@@ -34,25 +34,25 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   //put your can Id's here!
   public static final int frontLeftDriveId = 1;
-  public static final int frontLeftCANCoderId = 21;
+  public static final int frontLeftCANCoderId = 5;
   public static final int frontLeftSteerId = 11;
   //put your can Id's here!
   public static final int frontRightDriveId = 2;
-  public static final int frontRightCANCoderId = 22;
+  public static final int frontRightCANCoderId = 6;
   public static final int frontRightSteerId = 12;
   //put your can Id's here!
   public static final int backLeftDriveId = 4;
-  public static final int backLeftCANCoderId = 24;
+  public static final int backLeftCANCoderId = 8;
   public static final int backLeftSteerId = 14;
   //put your can Id's here!
   public static final int backRightDriveId = 3;
-  public static final int backRightCANCoderId = 23;
+  public static final int backRightCANCoderId = 7;
   public static final int backRightSteerId = 13;
 
   public static AHRS gyro = new AHRS(SPI.Port.kMXP);
 
   private SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
-    // width = 19 inches, length = 19.5 inches
+    // width = 19 inches, length = 19 inches
     // front left
     new Translation2d(
       Units.inchesToMeters(9.5),
@@ -112,25 +112,26 @@ public class SwerveDrivetrain extends SubsystemBase {
           : new ChassisSpeeds(xSpeed, ySpeed, rot));
     SwerveDriveKinematics.normalizeWheelSpeeds(states, kMaxSpeed);
     for (int i = 0; i < states.length; i++) {
-      SwerveModuleMK3 module = modules[i];
-      SwerveModuleState state = states[i];
-      //SmartDashboard.putNumber(String.valueOf(i), module.getRawAngle());
       //below is a line to comment out from step 5
-      module.setDesiredState(state);
-      SmartDashboard.putNumber(String.valueOf(i) + "_desiredstate_angle_deg", state.angle.getDegrees());
-      SmartDashboard.putNumber(String.valueOf(i) + "_desiredstate_speedMetersPerSecond", state.speedMetersPerSecond); 
+      modules[i].setDesiredState(states[i]);
+      // SmartDashboard.putNumber(String.valueOf(i) + "_desiredstate_angle_deg", states[i].angle.getDegrees());
+      // SmartDashboard.putNumber(String.valueOf(i) + "_desiredstate_speedMetersPerSecond", states[i].speedMetersPerSecond); 
     }
-    //SmartDashboard.putNumber("gyro Angle", gyro.getAngle());
+
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     for (int i = 0; i < modules.length; i++) {
-      SwerveModuleMK3 module = modules[i];
-      SmartDashboard.putNumber(String.valueOf(i), module.getRawAngle());
+      SmartDashboard.putNumber(String.valueOf(i), modules[i].getRawAngle());
     }
     SmartDashboard.putNumber("gyro Angle", gyro.getAngle());
+
+    // TODO: add odometry
+    // m_pose = m_odometry.update(gyro.getAngle(), m_frontLeftModule.getState(), m_frontRightModule.getState(), m_backLeftModule.getState(), m_backRightModule.getState());
+    // SmartDashboard.putNumber("Robot Position (X)", m_pose.getX());
+    // SmartDashboard.putNumber("Robot Position (Y)", m_pose.getY());
   }
 
   @Override
