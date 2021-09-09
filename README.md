@@ -5,7 +5,7 @@
       <ol>
       <li> Our bots current firmware versions:</li>
       <li> roboRIO: 2021_v3</li>
-      <li> Falcon500's: 21.0.0</li>
+      <li> Falcon500's: 21.0.1</li> <b>important! fixes problems with CAN ids > 15</b>
       <li> CANCoder's: 20.1 </li>
       </ol>
   <li>While you are in the phoenix tuner make sure you know what each motor and cancoders CAN ids are.</li>
@@ -24,4 +24,7 @@
       </ol>
    <li>Uncomment line 109 in SwerveDrivetrain.java in addition to lines 96 and 101 in SwerveModuleMK3.java</li>
   <li> Happy swerving!</li>
+
+
+Make sure you use the latest firmware for Falcon FX motors, or use CAN ids less than 15. See this for details: https://docs.ctre-phoenix.com/en/stable/ch21_Errata.html#talonfx-remoteid-errata 
 </ol>
